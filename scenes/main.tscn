@@ -1,6 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dus1mnt0e511a"]
+[gd_scene load_steps=8 format=3 uid="uid://dus1mnt0e511a"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_4l1n6"]
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_8e240"]
+[ext_resource type="Script" path="res://scripts/ball.gd" id="2_aidi4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6i08b"]
 size = Vector2(16, 56)
@@ -15,6 +17,7 @@ size = Vector2(64, 720)
 size = Vector2(16, 16)
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_8e240")
 
 [node name="BG" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -78,7 +81,7 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player1" type="CharacterBody2D" parent="."]
+[node name="Player1" type="StaticBody2D" parent="."]
 position = Vector2(32, 360)
 collision_mask = 2
 script = ExtResource("1_4l1n6")
@@ -101,7 +104,7 @@ grow_vertical = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player1"]
 shape = SubResource("RectangleShape2D_6i08b")
 
-[node name="Player2" type="CharacterBody2D" parent="."]
+[node name="Player2" type="StaticBody2D" parent="."]
 position = Vector2(1248, 360)
 collision_mask = 2
 script = ExtResource("1_4l1n6")
@@ -156,8 +159,12 @@ position = Vector2(1312, 360)
 shape = SubResource("RectangleShape2D_tbam7")
 
 [node name="Ball" type="CharacterBody2D" parent="."]
+unique_name_in_owner = true
 position = Vector2(640, 360)
-collision_layer = 3
+collision_layer = 4
+collision_mask = 3
+motion_mode = 1
+script = ExtResource("2_aidi4")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
@@ -171,3 +178,7 @@ offset_right = 8.0
 offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="BallTimer" type="Timer" parent="."]
+one_shot = true
+autostart = true
