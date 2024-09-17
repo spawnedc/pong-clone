@@ -19,8 +19,8 @@ config/icon="res://icon.svg"
 
 Constants="*res://scripts/managers/Constants.gd"
 GameManager="*res://scripts/managers/GameManager.gd"
-UiManager="*res://scripts/managers/UIManager.gd"
 BotManager="*res://scripts/managers/BotManager.gd"
+CollisionManager="*res://scripts/managers/CollisionManager.gd"
 
 [debug]
 

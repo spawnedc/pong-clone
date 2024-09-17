@@ -27,7 +27,7 @@ func _process(delta: float) -> void:
 			speed += ACCELERATION
 			dir = new_direction(collider as Player)
 		else:
-			dir = dir.bounce(collision.get_normal())
+			dir = CollisionManager.handle_ball_to_wall_collision(collision, dir)
 
 func random_direction() -> Vector2:
 	var new_dir := Vector2()
@@ -40,7 +40,7 @@ func new_direction(collider: Player) -> Vector2:
 	var pad_y := collider.position.y
 	var dist := ball_y - pad_y
 	var new_dir := Vector2()
-	
+
 	#flip the horizontal direction
 	if dir.x > 0:
 		new_dir.x = -1
