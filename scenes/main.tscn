@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dus1mnt0e511a"]
+[gd_scene load_steps=9 format=3 uid="uid://dus1mnt0e511a"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_4l1n6"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_8e240"]
 [ext_resource type="Script" path="res://scripts/ball.gd" id="2_aidi4"]
+[ext_resource type="Script" path="res://scripts/hud.gd" id="2_yek1c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6i08b"]
 size = Vector2(16, 56)
@@ -32,6 +33,7 @@ size_flags_vertical = 3
 color = Color(0, 0, 0, 1)
 
 [node name="HUD" type="CanvasLayer" parent="."]
+script = ExtResource("2_yek1c")
 
 [node name="Wrapper" type="Control" parent="HUD"]
 layout_mode = 3
@@ -175,7 +177,6 @@ metadata/_edit_group_ = true
 shape = SubResource("RectangleShape2D_h1tol")
 
 [node name="ColorRect" type="ColorRect" parent="Ball"]
-anchors_preset = -1
 offset_left = -8.0
 offset_top = -8.0
 offset_right = 8.0
