@@ -24,11 +24,9 @@ func _physics_process(delta: float) -> void:
 	var collision := move_and_collide(dir * speed * delta)
 	if collision:
 		var collider: StaticBody2D = collision.get_collider()
-		#if ball hits paddle
 		if collider.collision_layer == PLAYER:
 			speed += ACCELERATION
 			dir = new_direction(collider as Player)
-		#if it hits a wall
 		else:
 			dir = dir.bounce(collision.get_normal())
 

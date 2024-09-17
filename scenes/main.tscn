@@ -186,4 +186,3 @@ grow_vertical = 2
 
 [node name="BallTimer" type="Timer" parent="."]
 one_shot = true
-autostart = true

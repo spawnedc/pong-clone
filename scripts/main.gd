@@ -13,6 +13,7 @@ func _ready() -> void:
 	ball_timer.timeout.connect(_on_ball_timer_timeout)
 	p1_goal.body_entered.connect(_on_p1_score)
 	p2_goal.body_entered.connect(_on_p2_score)
+	ball_timer.start()
 
 func _on_ball_timer_timeout() -> void:
 	ball.new_ball()
