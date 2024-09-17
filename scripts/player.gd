@@ -6,25 +6,17 @@ extends StaticBody2D
 @onready var window_size := get_window().size
 @onready var color_rect: ColorRect = $ColorRect
 @onready var half_height := color_rect.size.y / 2
-@onready var ball: Ball = %Ball
 
-const PADDLE_SPEED := 500
 
 func _process(delta: float) -> void:
 	if is_player:
+		var dist := Constants.DEFAULT_PADDLE_SPEED * delta
 		if (Input.is_action_pressed("ui_up")):
-			position.y -= PADDLE_SPEED * delta
+			position.y -= dist
 		elif (Input.is_action_pressed("ui_down")):
-			position.y += PADDLE_SPEED * delta
+			position.y += dist
 	else:
-		var dist := position.y - ball.position.y
-
-		var move_by := dist
-		
-		if abs(dist) > PADDLE_SPEED * delta:
-			move_by = PADDLE_SPEED * delta * (dist / abs(dist))
-
-		position.y -= move_by
+		position.y = BotManager.calculate_paddle_y_position(delta)
 
 	position.y = clamp(position.y, half_height, window_size.y - half_height)
 

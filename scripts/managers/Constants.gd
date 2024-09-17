@@ -1,3 +1,5 @@
+extends Node
+
 const DEFAULT_PADDLE_SPEED := 500
 
 const BALL_START_SPEED := 300.0

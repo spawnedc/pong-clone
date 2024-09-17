@@ -107,6 +107,7 @@ grow_vertical = 2
 shape = SubResource("RectangleShape2D_6i08b")
 
 [node name="Player2" type="StaticBody2D" parent="."]
+unique_name_in_owner = true
 position = Vector2(1248, 360)
 collision_mask = 2
 script = ExtResource("1_4l1n6")
@@ -165,7 +166,6 @@ position = Vector2(1312, 360)
 shape = SubResource("RectangleShape2D_tbam7")
 
 [node name="Ball" type="CharacterBody2D" parent="."]
-unique_name_in_owner = true
 position = Vector2(640, 360)
 collision_layer = 4
 collision_mask = 11
