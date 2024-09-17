@@ -19,8 +19,7 @@ func new_ball() -> void:
 	speed = START_SPEED
 	dir = random_direction()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta: float) -> void:
+func _process(delta: float) -> void:
 	var collision := move_and_collide(dir * speed * delta)
 	if collision:
 		var collider: StaticBody2D = collision.get_collider()
