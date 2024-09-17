@@ -11,21 +11,23 @@ const MAX_Y_VECTOR: float = 0.6
 
 var speed := START_SPEED
 var dir: Vector2
+var collision: KinematicCollision2D
 
 func new_ball() -> void:
-	#randomize start position and direction
 	position.x = window_size.x / 2.0
 	position.y = randi_range(200, window_size.y - 200)
 	speed = START_SPEED
 	dir = random_direction()
 
 func _process(delta: float) -> void:
-	var collision := move_and_collide(dir * speed * delta)
+	collision = move_and_collide(dir * speed * delta)
+
+func _physics_process(_delta: float) -> void:
 	if collision:
-		var collider: StaticBody2D = collision.get_collider()
+		var collider: PhysicsBody2D = collision.get_collider()
 		if collider.collision_layer == PLAYER:
 			speed += ACCELERATION
-			dir = new_direction(collider as Player)
+			dir = CollisionManager.handle_ball_to_player_collision(collider as Player, dir)
 		else:
 			dir = CollisionManager.handle_ball_to_wall_collision(collision, dir)
 
@@ -33,20 +35,4 @@ func random_direction() -> Vector2:
 	var new_dir := Vector2()
 	new_dir.x = [1, -1].pick_random()
 	new_dir.y = randf_range(-1, 1)
-	return new_dir.normalized()
-
-func new_direction(collider: Player) -> Vector2:
-	var ball_y := position.y
-	var pad_y := collider.position.y
-	var dist := ball_y - pad_y
-	var new_dir := Vector2()
-
-	#flip the horizontal direction
-	if dir.x > 0:
-		new_dir.x = -1
-	else:
-		new_dir.x = 1
-
-	new_dir.y = (dist / (collider.get_height() / 2)) * MAX_Y_VECTOR
-
 	return new_dir.normalized()

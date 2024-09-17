@@ -83,7 +83,7 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player1" type="StaticBody2D" parent="."]
+[node name="Player1" type="CharacterBody2D" parent="."]
 position = Vector2(32, 360)
 collision_mask = 2
 script = ExtResource("1_4l1n6")
@@ -106,7 +106,7 @@ grow_vertical = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player1"]
 shape = SubResource("RectangleShape2D_6i08b")
 
-[node name="Player2" type="StaticBody2D" parent="."]
+[node name="Player2" type="CharacterBody2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(1248, 360)
 collision_mask = 2

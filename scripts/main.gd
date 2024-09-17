@@ -8,6 +8,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	CollisionManager.ball = ball
 	BotManager.ball = ball
 	BotManager.bot_player = bot_player
 	ball_timer.timeout.connect(_on_ball_timer_timeout)
