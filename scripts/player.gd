@@ -16,7 +16,7 @@ func _process(delta: float) -> void:
 		elif (Input.is_action_pressed("ui_down")):
 			position.y += dist
 	else:
-		position.y = BotManager.calculate_paddle_y_position(delta)
+		position.y -= BotManager.calculate_paddle_y_position(delta)
 
 	position.y = clamp(position.y, half_height, window_size.y - half_height)
 
